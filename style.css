@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+/*
+ Colour presets from
+ https://firefox-source-docs.mozilla.org/devtools-user/devtoolscolors/index.html 
+*/
+
+:root {
+    --bg: #14171a;
+    --bg-headfoot: #181d20;
+    --bg-select: #1d4f73;
+    --text: #f5f7fa;
+    --blue: #46afe3;
+    --blue-grey: #5e88b0;
+    --purple: #6b7abb;
+    --pink: #df80ff;
+    --green: #70bf53;
+}
+
+* {
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    background-color: var(--bg);
+    color: var(--text);
+    width: 100%;
+    font-smooth: always;
+    font-family: 'Raleway', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body,
+nav,
+header,
+section,
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+body{
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.select-link {
+    display: inline;
+    position: relative;
+    margin-left: 16px;
+    margin-right: 16px;
+    color: var(--text) !important;
+    text-decoration: none;
+    z-index: 2;
+    transition: 0.2s color;
+    font-weight: bolder;
+    word-break: keep-all;
+}
+
+a.select-link:after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 12px) !important;
+    height: 3px;
+    bottom: -3px;
+    left: -5px;
+    z-index: -1;
+    background: var(--bg-select) !important;
+    transition: 0.2s height;
+}
+
+a.select-link:hover:after {
+    height: calc(100% + 6px) !important;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 256px;
+    color: var(--blue);
+    font-size: 2.5rem;
+}
+
+h2 {
+    padding: 32px;
+    color: var(--blue);
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4,
+p {
+    font-size: 1.25rem;
+}
+
+.empty {
+    opacity: 0;
+}
+
+
+section {
+    max-width: 1280px;
+    width: 100%;
+}
+
+.section-title {
+    width: 30%;
+    min-width: 30%;
+    text-align: right;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 128px;
+    padding: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.section-content {
+    margin: 128px 32px;
+    width: 50%;
+    
+}
+
+/* ----------- */
+/* nav style  */
+/* --------- */
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: var(--bg-headfoot);
+    height: 64px;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+    align-items: center;
+}
+
+nav>a {
+    margin-right: auto;
+    padding-left: 16px;
+    transition: 0.2s color;
+}
+
+nav>a p:first-child {
+    font-weight: normal;
+}
+
+nav>a p:last-child {
+    position: relative;
+    top: -5px;
+    left: 32px;
+    font-weight: bolder;
+}
+
+nav>ul {
+    margin-left: auto;
+    list-style-type: none;
+    padding-right: 16px;
+}
+
+nav>ul>li {
+    float: left;
+}
+
+
+/* ------------- */
+/* header intro */
+/* ----------- */
+header#intro {
+    height: 100vh;
+    align-items: center;
+    padding-right: 256px;
+}
+
+header#intro:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("images/banner_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(4px) brightness(75%) contrast(75%);
+}
+
+header#intro div.section-content {
+    position: relative;
+    margin: 0;
+    padding-bottom: 256px;
+}
+
+header#intro>* {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+}
+
+header#intro h1 {
+    text-align: left;
+    color: var(--text);
+    padding: 32px 0;
+}
+
+header#intro h2 {
+    color: var(--text);
+    padding: 32px 0;
+}
+
+header#intro a.select-link {
+    margin: 0;
+}
+
+/* --------------------- */
+/* Timeline lists style */
+/* ------------------- */
+ul.timeline {
+    list-style: none;
+    display: table;
+    margin: 0;
+    padding: 0;
+}
+
+ul.timeline li {
+    padding-bottom: 50px;
+    position: relative;
+}
+
+ul.timeline li span#current {
+    color: var(--blue-grey);
+}
+
+ul.timeline li span.time {
+
+    border-radius: 4px;
+    border: 2px solid var(--purple);
+    padding: 5px 10px;
+    margin-right: 10px;
+    background: var(--bg);
+    width: 72px;
+    display: inline-block;
+}
+
+ul.timeline li span.time:before {
+    content: '';
+    position: absolute;
+    border-left: 2px solid var(--purple);
+    /* border-image: linear-gradient(to bottom, var(--blue), rgba(0, 0, 0, 0)) 32 100%; */
+    left: 16px;
+    bottom: 0;
+    z-index: -1;
+    height: 100%
+}
+
+ul.timeline li span.list-icon {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+ul.timeline li span.list-icon>img {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--purple);
+    border-radius: 4px;
+}
+
+ul.timeline li span.list-icon:before {
+    content: '';
+    position: absolute;
+    border-left: 2px solid var(--purple);
+    /*border-image: linear-gradient(to bottom, var(--blue), rgba(0, 0, 0, 0)) 32 100%;*/
+    left: 16px;
+    bottom: 0px;
+    z-index: -1;
+    height: 100%
+}
+
+ul.timeline li:last-child span.time:before {
+    content: none;
+}
+
+ul.timeline li:last-child img.list-icon:before {
+    content: none;
+}
+
+ul.timeline li:last-child {
+    padding-bottom: 0;
+    background: var(--bg);
+}
+
+ul.timeline li>div {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    padding: 1px;
+}
+
+ul.timeline li>div>h3 {
+    color: var(--pink);
+    text-align: left;
+}
+
+ul.timeline li>div>p {
+    padding-left: 2px;
+    text-align: left;
+}
+
+/* --------------- */
+/* Skills section */
+/* ------------- */
+section#skills div {
+    display: inline-block;
+}
+
+section#skills h3 {
+    color: var(--pink);
+}
+
+section#skills h4 {
+    margin-top: 8px;
+    color: var(--purple);
+}
+
+section#skills div.skills-left {
+    float: left;
+    margin-right: 32px;
+    width: 128px;
+}
+
+section#skills div.skills-right {
+    float: right;
+    width: 128px;
+}
+
+section#skills ul {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------------- */
+/* Box grids style */
+/* -------------- */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 32px;
+    row-gap: 32px;
+
+}
+
+.grid-item {
+    position: relative;
+    background-size: cover;
+    height: 256px;
+    width: 256px;
+    overflow: hidden;
+}
+
+.grid-item>img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    filter: blur(4px) brightness(50%) contrast(75%);
+    transition: 0.2s filter;
+}
+
+.grid-container>a:hover .grid-item>img {
+    filter: blur(1px) brightness(50%) contrast(75%);
+}
+
+.grid-item div {
+    z-index: 1;
+    position: relative;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+}
+
+.grid-item h3 {
+    padding: 4px;
+    text-align: left;
+    padding: 16px 16px 0;
+}
+
+.grid-item p {
+    margin: 4px;
+}
+
+section#projects ul {
+    text-align: left;
+    list-style-type: none;
+    font-family: 'Source Code Pro', monospace;
+    padding: 0px 16px 0px;
+}
+
+section#projects ul>li {
+    padding: 1px;
+}
+
+/* ----------------- */
+/* Projects section */
+/* --------------- */
+
+
+/* ---------------- */
+/* homelab section */
+/* -------------- */
+section#homelab {
+    position: relative;
+    display: none;
+}
+
+section#homelab:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--bg-headfoot);
+    z-index: -2;
+}
+
+section#homelab div.list-container {
+    margin: 32px 0;
+}
+
+section#homelab div.list-container p {
+    padding: 5px 0;
+}
+
+section#homelab ul.timeline li span.time {
+    background: var(--bg-headfoot);
+}
+
+section#homelab ul.timeline li:last-child {
+    background: var(--bg-headfoot);
+}
+
+/* ------------------------ */
+/* Volunteering experience */
+/* ---------------------- */
+
+
+/* ---------------- */
+/* Contact section */
+/* -------------- */
+
+
+/* ------------- */
+/* Footer Style */
+/* ----------- */
+footer {
+    width: 100%;
+    height: 64px;
+    align-items: center;
+    background-color: var(--bg-headfoot);
+    color: var(--green);
+}
+
+footer>a {}
+
+footer>a:hover {}
