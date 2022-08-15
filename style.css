@@ -6,6 +6,8 @@
 */
 
 :root {
+    font-family: 'Raleway', sans-serif;
+
     --bg: #14171a;
     --bg-headfoot: #181d20;
     --bg-select: #1d4f73;
@@ -15,6 +17,10 @@
     --purple: #6b7abb;
     --pink: #df80ff;
     --green: #70bf53;
+
+
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 * {
@@ -22,21 +28,18 @@
 }
 
 html {
-    background-color: var(--bg);
-    color: var(--text);
     width: 100%;
     font-smooth: always;
-    font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
 
 body,
 nav,
 header,
+.content-wrapper,
 section,
 footer {
     display: flex;
-    justify-content: center;
 }
 
 body,
@@ -48,9 +51,14 @@ p {
     margin: 0;
 }
 
-body{
+body {
+    flex-direction: column;
+}
+
+.content-wrapper {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 a {
@@ -115,7 +123,7 @@ p {
 
 
 section {
-    max-width: 1280px;
+    max-width: 1200px;
     width: 100%;
 }
 
@@ -134,7 +142,7 @@ section {
 .section-content {
     margin: 128px 32px;
     width: 50%;
-    
+
 }
 
 /* ----------- */
@@ -199,7 +207,7 @@ header#intro:before {
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
-    filter: blur(4px) brightness(75%) contrast(75%);
+    filter: blur(4px) brightness(60%) contrast(75%);
 }
 
 header#intro div.section-content {
@@ -261,7 +269,6 @@ ul.timeline li span.time:before {
     content: '';
     position: absolute;
     border-left: 2px solid var(--purple);
-    /* border-image: linear-gradient(to bottom, var(--blue), rgba(0, 0, 0, 0)) 32 100%; */
     left: 16px;
     bottom: 0;
     z-index: -1;
@@ -284,7 +291,6 @@ ul.timeline li span.list-icon:before {
     content: '';
     position: absolute;
     border-left: 2px solid var(--purple);
-    /*border-image: linear-gradient(to bottom, var(--blue), rgba(0, 0, 0, 0)) 32 100%;*/
     left: 16px;
     bottom: 0px;
     z-index: -1;
@@ -402,18 +408,14 @@ section#skills ul {
     padding: 16px 16px 0;
 }
 
-.grid-item p {
-    margin: 4px;
-}
-
-section#projects ul {
+.grid-item ul {
     text-align: left;
     list-style-type: none;
     font-family: 'Source Code Pro', monospace;
     padding: 0px 16px 0px;
 }
 
-section#projects ul>li {
+.grid-item ul>li {
     padding: 1px;
 }
 
@@ -439,6 +441,7 @@ section#homelab:before {
     width: 100%;
     background: var(--bg-headfoot);
     z-index: -2;
+    border-radius: 4%;
 }
 
 section#homelab div.list-container {
@@ -474,10 +477,110 @@ footer {
     width: 100%;
     height: 64px;
     align-items: center;
+    justify-content: center;
     background-color: var(--bg-headfoot);
     color: var(--green);
 }
 
-footer>a {}
+footer .select-link {
+    color: var(--green) !important;
+    transition: 0.2s color;
+}
 
-footer>a:hover {}
+footer .select-link:hover {
+    color: var(--text) !important;
+}
+
+footer .select-link:after {
+    background: var(--green) !important;
+}
+
+
+
+@media(max-width: 1080px) {
+    nav {
+        display: none;
+    }
+
+    section {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    h4,
+    p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        width: 90%;
+        text-align: center;
+        margin-top: 64px;
+    }
+
+    .section-content {
+        width: 90%;
+        margin-top: 32px;
+    }
+
+    /* ------------- */
+    /* header intro */
+    /* ----------- */
+
+    header#intro {
+        padding: 0;
+        text-align: center;
+    }
+
+    header#intro h1 {
+        text-align: center;
+    }
+
+    /* --------------------- */
+    /* Timeline lists style */
+    /* ------------------- */
+
+    ul.timeline li span.time:before {
+        left: 0px;
+    }
+
+    ul.timeline li span.list-icon:before {
+        left: 0px;
+    }
+
+    ul.timeline li>div>h3 {
+        font-size: 1rem;
+    }
+
+    ul.timeline li>div {
+        display: block;
+        padding-left: 8px;
+    }
+
+    /* ---------------- */
+    /* Box grids style */
+    /* -------------- */
+
+    .grid-container {
+        grid-template-columns: auto;
+    }
+
+    .grid-item h3,
+    .grid-item ul {
+        text-align: center;
+    }
+
+
+
+}
