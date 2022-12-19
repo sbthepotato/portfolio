@@ -2,7 +2,8 @@
 var agespan = document.getElementById('age');
 
 // gets the current date and subtracts with dob to get an age.
-dob = new Date(1997, 12, 13);
+// months count from 0 so 11 = december (How stupid lol)
+dob = new Date(1997, 11, 13);
 var today = new Date();
 var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
 
